@@ -1,29 +1,22 @@
 import { router, Stack } from "expo-router";
-import { Pressable, StyleSheet, View } from "react-native";
+import { Platform, Pressable, StyleSheet, View } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
 import { Spacing } from "@/constants/theme";
-import { useHeaderHeight } from "@react-navigation/elements";
 
 export default function Sheet2() {
-  const headerHeight = useHeaderHeight();
-
   return (
     <>
-      <Stack.Screen.Title>Second Sheet</Stack.Screen.Title>
-      <Stack.Toolbar placement="left">
-        <Stack.Toolbar.Button variant="plain">
-          <Stack.Toolbar.Icon sf="star.fill" />
-          <Stack.Toolbar.Label>As components</Stack.Toolbar.Label>
-          <Stack.Toolbar.Badge>3</Stack.Toolbar.Badge>
-        </Stack.Toolbar.Button>
-      </Stack.Toolbar>
-      <View
-        style={[
-          styles.container,
-          { paddingTop: headerHeight, marginBottom: -headerHeight },
-        ]}
-      >
+      <Stack.Screen
+        options={{
+          title: "Second Sheet",
+          headerShown: true,
+          presentation: Platform.OS === "web" ? "modal" : "formSheet",
+          sheetAllowedDetents: "fitToContents",
+          sheetGrabberVisible: true,
+        }}
+      />
+      <View style={styles.container}>
         <View style={styles.content}>
           <ThemedText type="subtitle">Second Sheet</ThemedText>
           <ThemedText themeColor="textSecondary" style={styles.description}>
@@ -42,11 +35,6 @@ export default function Sheet2() {
           </Pressable>
         </View>
       </View>
-      <Stack.Toolbar placement="bottom">
-        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
-        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
-        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
-      </Stack.Toolbar>
     </>
   );
 }

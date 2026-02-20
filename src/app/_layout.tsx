@@ -7,24 +7,15 @@ import { Stack } from "expo-router";
 import React from "react";
 import { useColorScheme } from "react-native";
 
-import { AnimatedSplashOverlay } from "@/components/animated-icon";
-
-const formSheetOptions = {
-  presentation: "formSheet" as const,
-  sheetAllowedDetents: "fitToContents" as const,
-  sheetGrabberVisible: true,
+export const unstable_settings = {
+  anchor: "(tabs)",
 };
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="sheet1" options={formSheetOptions} />
-        <Stack.Screen name="sheet2" options={formSheetOptions} />
-      </Stack>
+      <Stack />
     </ThemeProvider>
   );
 }
