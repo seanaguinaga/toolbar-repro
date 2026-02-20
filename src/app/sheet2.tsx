@@ -19,6 +19,10 @@ export default function Sheet2() {
           sheetGrabberVisible: true,
         }}
       />
+      <Stack.Screen.Title>Second Sheet</Stack.Screen.Title>
+      <Stack.Toolbar placement="left">
+        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
+      </Stack.Toolbar>
       <View
         style={[
           styles.container,
@@ -43,6 +47,10 @@ export default function Sheet2() {
           </Pressable>
         </View>
       </View>
+      <Stack.Toolbar placement="bottom">
+        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
+        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
+      </Stack.Toolbar>
     </>
   );
 }

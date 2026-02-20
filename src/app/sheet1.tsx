@@ -1,5 +1,4 @@
-import { Link, router } from "expo-router";
-import { Stack } from "expo-router";
+import { Link, router, Stack } from "expo-router";
 import { Platform, Pressable, StyleSheet, View } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
@@ -21,6 +20,10 @@ export default function Sheet1() {
           sheetGrabberVisible: true,
         }}
       />
+      <Stack.Screen.Title>First Sheet</Stack.Screen.Title>
+      <Stack.Toolbar placement="left">
+        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
+      </Stack.Toolbar>
       <View
         style={[
           styles.container,
@@ -53,6 +56,9 @@ export default function Sheet1() {
           </Pressable>
         </View>
       </View>
+      <Stack.Toolbar placement="bottom">
+        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
+      </Stack.Toolbar>
     </>
   );
 }
