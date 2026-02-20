@@ -1,5 +1,6 @@
 import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
+import { Link } from 'expo-router';
+import { Platform, Pressable, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedIcon } from '@/components/animated-icon';
@@ -44,9 +45,16 @@ export default function HomeScreen() {
         </ThemedText>
 
         <ThemedView type="backgroundElement" style={styles.stepContainer}>
+          <Link href="/sheet1" asChild>
+            <Pressable style={({ pressed }) => pressed && styles.pressed}>
+              <ThemedView type="backgroundElement" style={styles.sheetButton}>
+                <ThemedText type="link">Open first sheet</ThemedText>
+              </ThemedView>
+            </Pressable>
+          </Link>
           <HintRow
             title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
+            hint={<ThemedText type="code">src/app/(tabs)/index.tsx</ThemedText>}
           />
           <HintRow title="Dev tools" hint={getDevMenuHint()} />
           <HintRow
@@ -94,5 +102,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.four,
     borderRadius: Spacing.four,
+  },
+  sheetButton: {
+    paddingHorizontal: Spacing.four,
+    paddingVertical: Spacing.two,
+    borderRadius: Spacing.five,
+  },
+  pressed: {
+    opacity: 0.7,
   },
 });

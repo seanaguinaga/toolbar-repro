@@ -1,16 +1,30 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import React from 'react';
-import { useColorScheme } from 'react-native';
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from "@react-navigation/native";
+import { Stack } from "expo-router";
+import React from "react";
+import { useColorScheme } from "react-native";
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+import { AnimatedSplashOverlay } from "@/components/animated-icon";
 
-export default function TabLayout() {
+const formSheetOptions = {
+  presentation: "formSheet" as const,
+  sheetAllowedDetents: "fitToContents" as const,
+  sheetGrabberVisible: true,
+};
+
+export default function RootLayout() {
   const colorScheme = useColorScheme();
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <AnimatedSplashOverlay />
-      <AppTabs />
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="sheet1" options={formSheetOptions} />
+        <Stack.Screen name="sheet2" options={formSheetOptions} />
+      </Stack>
     </ThemeProvider>
   );
 }
