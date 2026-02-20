@@ -47,6 +47,11 @@ export default function Sheet1() {
           </Pressable>
         </View>
       </View>
+      <Stack.Toolbar placement="bottom">
+        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
+        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
+        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
+      </Stack.Toolbar>
     </>
   );
 }
