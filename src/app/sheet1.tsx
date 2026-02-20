@@ -5,8 +5,11 @@ import { Platform, Pressable, StyleSheet, View } from "react-native";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { Spacing } from "@/constants/theme";
+import { useHeaderHeight } from "@/hooks/use-header-height";
 
 export default function Sheet1() {
+  const headerHeight = useHeaderHeight();
+
   return (
     <>
       <Stack.Screen
@@ -18,7 +21,12 @@ export default function Sheet1() {
           sheetGrabberVisible: true,
         }}
       />
-      <View style={styles.container}>
+      <View
+        style={[
+          styles.container,
+          { paddingTop: headerHeight, marginBottom: -headerHeight },
+        ]}
+      >
         <View style={styles.content}>
           <Link href="/sheet2" asChild>
             <Pressable

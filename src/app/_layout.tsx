@@ -15,7 +15,10 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="sheet1" options={{ headerShown: true }} />
+        <Stack.Screen name="sheet2" options={{ headerShown: true }} />
+      </Stack>
     </ThemeProvider>
   );
 }
