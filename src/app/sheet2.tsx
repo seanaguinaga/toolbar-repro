@@ -12,7 +12,11 @@ export default function Sheet2() {
     <>
       <Stack.Screen.Title>Second Sheet</Stack.Screen.Title>
       <Stack.Toolbar placement="left">
-        <Stack.Toolbar.Button icon="0.circle" onPress={() => router.back()} />
+        <Stack.Toolbar.Button variant="plain">
+          <Stack.Toolbar.Icon sf="star.fill" />
+          <Stack.Toolbar.Label>As components</Stack.Toolbar.Label>
+          <Stack.Toolbar.Badge>3</Stack.Toolbar.Badge>
+        </Stack.Toolbar.Button>
       </Stack.Toolbar>
       <View
         style={[
